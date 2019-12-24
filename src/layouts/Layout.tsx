@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import GlobalStyle from '../components/GlobalStyle'
 
 type Props = {
   children: ReactNode
@@ -6,7 +7,7 @@ type Props = {
 
 export default ({ children }: Props) => (
   <>
-    <div>test</div>
+    <GlobalStyle />
     {children}
   </>
 )

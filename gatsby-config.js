@@ -18,5 +18,26 @@ module.exports = {
         component: require.resolve('./src/layouts/Layout.tsx'),
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-154890526-1',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        path: `${__dirname}/src/i18n`,
+        languages: [`en`, `ko`],
+        defaultLanguage: `ko`,
+        redirect: true,
+      },
+    },
   ],
 }
