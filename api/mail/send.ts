@@ -16,7 +16,10 @@ export default async (req: NowRequest, res: NowResponse) => {
           {
             to: [
               {
-                email: 'ysm0622@gmail.com',
+                email: 'chris.yang@jsconfkorea.com',
+              },
+              {
+                email: 'contact@jsconfkorea.com',
               },
             ],
           },
