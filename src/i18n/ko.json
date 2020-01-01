@@ -1,3 +1,15 @@
 {
-	"test": "123"
+  "test": "테스트입니다",
+  "title": "타이틀 테스트",
+
+  "change_locale": "English",
+
+  "report.title": "익명 신고",
+  "report.description": "️위협적이거나 적대적으로 대하는 사람이나 상황이 있다면 이곳에 신고해주세요.",
+  "report.label": "신고 내용",
+  "report.empty_text_msg": "내용을 입력해주세요.",
+  "report.placeholder": "최대한 자세히 작성해주세요.",
+  "report.submit": "전송",
+  "report.error_msg": "전송 중 오류가 발생했습니다. 다시 시도해보세요.",
+  "report.sucess_msg": "신고가 접수되었습니다. 최대한 빠르게 조치하겠습니다."
 }

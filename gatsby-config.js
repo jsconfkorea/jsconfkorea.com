@@ -35,9 +35,23 @@ module.exports = {
       options: {
         path: `${__dirname}/src/i18n`,
         languages: [`en`, `ko`],
-        defaultLanguage: `ko`,
-        redirect: true,
+        defaultLanguage: `en`,
+        redirect: false,
       },
+    },
+    {
+      resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#ee7911`,
+        showSpinner: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {},
     },
   ],
 }
