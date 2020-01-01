@@ -18,7 +18,7 @@ export default () => {
         <link rel="icon" href="/icon.png" />
         <meta
           property="og:title"
-          content={`${t('report.title')}} | JSConf Korea`}
+          content={`${t('report.title')} | JSConf Korea`}
         />
         <meta property="og:description" content={t('report.description')} />
       </Helmet>
