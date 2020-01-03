@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
-import { Link, changeLocale } from 'gatsby-plugin-intl'
+import React from 'react'
+import { changeLocale } from 'gatsby-plugin-intl'
 import { useIntl } from 'react-intl'
 import useTrans from '../hooks/useTrans'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import np from 'nprogress'
 import ReportImage from '../../public/report_illust.svg'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export default () => {
   const intl = useIntl()
   const t = useTrans()
-  const [text, setText] = useState('')
+  const [text, setText] = useLocalStorage('reportText', '')
   return (
     <>
       <Helmet>
