@@ -1,7 +1,6 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
 import emotionNormalize from 'emotion-normalize'
-import 'typeface-noto-sans'
 
 const style = css`
   ${emotionNormalize}
@@ -25,6 +24,9 @@ const style = css`
     overflow: hidden;
     height: 100%;
     word-break: keep-all;
+    color: #333;
+    line-height: 1.6;
+    /* word-wrap: break-word; */
   }
 
   body {
@@ -39,6 +41,9 @@ const style = css`
       display: none;
     }
     scrollbar-width: none;
+    background-color: white;
+    margin: 0 auto;
+    padding: 30px 0;
   }
 
   *,

@@ -1,17 +1,19 @@
 import React from 'react'
-import { changeLocale } from 'gatsby-plugin-intl'
+// import { changeLocale } from 'gatsby-plugin-intl'
 import { useIntl } from 'react-intl'
-import useTrans from '../hooks/useTrans'
+import useTrans from './src/hooks/useTrans'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
-import np from 'nprogress'
-import ReportImage from '../../public/report_illust.svg'
-import useLocalStorage from '../hooks/useLocalStorage'
+// import np from 'nprogress'
+import ReportImage from './src/components/ReportIllust'
+// import useLocalStorage from '../hooks/useLocalStorage'
 
 export default () => {
   const intl = useIntl()
   const t = useTrans()
-  const [text, setText] = useLocalStorage('reportText', '')
+  // const [text, setText] = useLocalStorage('reportText', '')
+  const text = ''
+  const setText = (s: string) => {}
   return (
     <>
       <Helmet>
@@ -29,8 +31,8 @@ export default () => {
         <button
           className="changeLocale"
           onClick={() => {
-            if (intl.locale === 'ko') changeLocale('en')
-            else changeLocale('ko')
+            // if (intl.locale === 'ko') changeLocale('en')
+            // else changeLocale('ko')
           }}
         >
           {t('change_locale')}
@@ -46,13 +48,13 @@ export default () => {
           className="submit"
           onClick={async () => {
             if (text === '') return alert(t('report.empty_text_msg'))
-            np.start()
+            // np.start()
             const res = await fetch('/api/mail/send', {
               method: 'POST',
               body: JSON.stringify({ text }),
             })
             if (res.status !== 202) return alert(t('report.error_msg'))
-            np.done()
+            // np.done()
             alert(t('report.sucess_msg'))
           }}
         >
