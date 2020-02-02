@@ -1,3 +1,4 @@
+console.log('gatsby-config')
 export default {
   plugins: [
     {
