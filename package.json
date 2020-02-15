@@ -37,6 +37,6 @@
     "react-helmet": "^5.2.1",
     "typeface-noto-sans": "^0.0.72",
     "typescript": "^3.7.4",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.0"
   }
 }
