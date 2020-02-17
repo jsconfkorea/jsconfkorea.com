@@ -1,0 +1,27 @@
+translation:
+  en: English
+  ko: 한국어
+
+  look_back_2019: 2019 행사보기
+  website: 웹사이트
+  video: 영상
+  call_for_proposals: 발표자 신청
+  sponsor: 스폰서 신청
+  newsletter: 뉴스레터 구독
+  code_of_conduct: 핵심원칙
+  privacy_policy: 개인정보처리방침
+
+  subcribe:
+    description: 메일 주소를 입력하세요.
+    error_message: 잘못된 이메일 형식입니다
+    submit: 전송
+
+  report:
+    title: 익명 신고
+    description: 위협적이거나 적대적으로 대하는 사람이나 상황이 있다면 이곳에 신고해주세요.
+    label: 신고 내용
+    placeholder: 최대한 자세히 작성해주세요.
+    submit: 전송
+    empty_text_message: 내용을 입력해주세요.
+    error_message: 전송 중 오류가 발생했습니다. 다시 시도해보세요.
+    sucess_message: 신고가 접수되었습니다. 최대한 빠르게 조치하겠습니다.

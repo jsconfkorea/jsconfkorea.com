@@ -1,0 +1,29 @@
+translation:
+  en: English
+  ko: 한국어
+
+  look_back_2019: LOOK BACK 2019
+  website: WEBSITE
+  video: VIDEO
+  call_for_proposals: CFP
+  sponsor: SPONSOR
+  newsletter: NEWS LETTER
+  code_of_conduct: CODE OF CONDUCT
+  privacy_policy: PRIVACY POLICY
+  
+  subcribe:
+    description: Please enter your e-mail address.
+    error_message: Incorrect email format
+    submit: SUBMIT
+
+  report:
+    title: Anonymous Report
+    description: If anyone or anything makes you feel unsafe or unwelcome, please report it here.
+    label: Report
+    placeholder: Please write in as much detail as possible.
+    submit: SUBMIT
+    empty_text_message: Please enter the details.
+    error_message: An error occurred during the submit. Please try again.
+    sucess_message: We have received your report. We will take action as soon as possible
+
+  
