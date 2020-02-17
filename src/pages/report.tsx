@@ -1,19 +1,14 @@
 import React from 'react'
-// import { changeLocale } from 'gatsby-plugin-intl'
-import { useIntl } from 'react-intl'
-import useTrans from './src/hooks/useTrans'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
-// import np from 'nprogress'
-import ReportImage from './src/components/ReportIllust'
-// import useLocalStorage from '../hooks/useLocalStorage'
+import ReportImage from '../components/ReportIllust'
+import { useTranslation } from 'react-i18next'
+import Link from '../i18n/Link'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export default () => {
-  const intl = useIntl()
-  const t = useTrans()
-  // const [text, setText] = useLocalStorage('reportText', '')
-  const text = ''
-  const setText = (s: string) => {}
+  const { t, i18n } = useTranslation()
+  const [text, setText] = useLocalStorage('reportText', '')
   return (
     <>
       <Helmet>
@@ -28,15 +23,15 @@ export default () => {
       <Component>
         <h1>{t('report.title')}</h1>
         <p>{t('report.description')}</p>
-        <button
-          className="changeLocale"
-          onClick={() => {
-            // if (intl.locale === 'ko') changeLocale('en')
-            // else changeLocale('ko')
-          }}
-        >
-          {t('change_locale')}
-        </button>
+        {i18n.language === 'en' ? (
+          <Link lang="ko" className="changeLocale">
+            KO
+          </Link>
+        ) : (
+          <Link lang="en" className="changeLocale">
+            EN
+          </Link>
+        )}
         <ReportImage />
         <span>{t('report.label')}</span>
         <textarea
@@ -47,15 +42,13 @@ export default () => {
         <button
           className="submit"
           onClick={async () => {
-            if (text === '') return alert(t('report.empty_text_msg'))
-            // np.start()
+            if (text === '') return alert(t('report.empty_text_message'))
             const res = await fetch('/api/mail/send', {
               method: 'POST',
               body: JSON.stringify({ text }),
             })
-            if (res.status !== 202) return alert(t('report.error_msg'))
-            // np.done()
-            alert(t('report.sucess_msg'))
+            if (res.status !== 202) return alert(t('report.error_message'))
+            alert(t('report.sucess_message'))
           }}
         >
           {t('report.submit')}
@@ -95,10 +88,11 @@ const Component = styled.div`
     background-color: white;
     border: none;
     font-weight: 900;
-    line-height: 22px;
+    line-height: 40px;
+    width: 30px;
     color: rgba(57, 57, 57, 0.6);
     height: 40px;
-    text-align: right;
+    text-align: center;
     cursor: pointer;
     &:hover {
       background-color: #eeeeee;

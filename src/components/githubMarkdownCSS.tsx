@@ -205,14 +205,6 @@ const style2 = css`
     display: inline-block;
   }
 
-  > *:first-child {
-    margin-top: 0 !important;
-  }
-
-  > *:last-child {
-    margin-bottom: 0 !important;
-  }
-
   .anchor {
     position: absolute;
     top: 0;
@@ -369,11 +361,11 @@ const style4 = css`
     border-left: 4px solid #ddd;
   }
 
-  blockquote > :first-child {
+  blockquote > :first-of-type {
     margin-top: 0;
   }
 
-  blockquote > :last-child {
+  blockquote > :last-of-type {
     margin-bottom: 0;
   }
 
@@ -400,7 +392,7 @@ const style4 = css`
     border-top: 1px solid #ccc;
   }
 
-  table tr:nth-child(2n) {
+  table tr:nth-of-type(2n) {
     background-color: #f8f8f8;
   }
 

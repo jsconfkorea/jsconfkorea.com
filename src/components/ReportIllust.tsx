@@ -18,9 +18,9 @@ export default () => (
         gradientTransform="translate(0.01 -0.01)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="gray" stop-opacity="0.25" />
-        <stop offset="0.54" stop-color="gray" stop-opacity="0.12" />
-        <stop offset="1" stop-color="gray" stop-opacity="0.1" />
+        <stop offset="0" stopColor="gray" stopOpacity="0.25" />
+        <stop offset="0.54" stopColor="gray" stopOpacity="0.12" />
+        <stop offset="1" stopColor="gray" stopOpacity="0.1" />
       </linearGradient>
       <linearGradient
         id="4387c4a6-2b07-43b0-875b-db8294e1d525"
@@ -60,9 +60,9 @@ export default () => (
         y2="205.86"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-opacity="0.12" />
-        <stop offset="0.55" stop-opacity="0.09" />
-        <stop offset="1" stop-opacity="0.02" />
+        <stop offset="0" stopOpacity="0.12" />
+        <stop offset="0.55" stopOpacity="0.09" />
+        <stop offset="1" stopOpacity="0.02" />
       </linearGradient>
       <linearGradient
         id="081aff01-d630-4567-81f7-f799dc64c22c"
@@ -123,25 +123,25 @@ export default () => (
       transform="translate(-198.34 -72.43)"
       fill="none"
       stroke="#69f0ae"
-      stroke-miterlimit="10"
-      stroke-width="9"
+      strokeMiterlimit="10"
+      strokeWidth="9"
     />
     <path
       d="M217,503.68C192.69,410.08,116.9-21.3,876.66,248"
       transform="translate(-198.34 -72.43)"
       fill="none"
       stroke="#69f0ae"
-      stroke-miterlimit="10"
-      stroke-width="9"
-      stroke-dasharray="12.04 12.04"
+      strokeMiterlimit="10"
+      strokeWidth="9"
+      strokeDasharray="12.04 12.04"
     />
     <path
       d="M882.35,250l5.65,2"
       transform="translate(-198.34 -72.43)"
       fill="none"
       stroke="#69f0ae"
-      stroke-miterlimit="10"
-      stroke-width="9"
+      strokeMiterlimit="10"
+      strokeWidth="9"
     />
     <path
       d="M794.94,582.69a81.21,81.21,0,0,0-161-15.14l-249.59-6.77,2.74,42.88s-35.59,82.12,151.46,104v83H754.79v-138A81.16,81.16,0,0,0,794.94,582.69Z"

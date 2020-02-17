@@ -30,20 +30,16 @@ const style = css`
   }
 
   body {
-    font-family: 'Noto Sans', 'Source Sans Pro', -apple-system,
-      BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-      sans-serif;
-    -webkit-user-select: none;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* -webkit-user-select: none; */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     overflow: scroll;
-    &::-webkit-scrollbar {
-      display: none;
-    }
     scrollbar-width: none;
     background-color: white;
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 0;
   }
 
   *,
@@ -53,7 +49,6 @@ const style = css`
     margin: 0;
     outline: none;
   }
-
   ::-webkit-scrollbar {
     display: none;
   }

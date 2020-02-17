@@ -17,6 +17,14 @@ export default ({ children }: Props) => (
 const Markdown = styled(ReactMarkdown)`
   padding: 1rem;
   max-width: 790px;
-  /* background-color: black; */
+
+  &:first-of-type {
+    margin-top: 0 !important;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0 !important;
+  }
+  
   ${githubMarkdownCSS}
 `

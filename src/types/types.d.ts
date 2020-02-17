@@ -1,3 +1,3 @@
 export type getInitialPropsArgs = {
-	lang?: string
+	route: string
 }
