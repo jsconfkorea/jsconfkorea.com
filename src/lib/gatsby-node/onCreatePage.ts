@@ -6,25 +6,25 @@ export default async ({
   actions: { createPage, deletePage },
   page,
 }: CreatePageArgs) => {
-  // console.log(page)
-  // const com = require(`${page.component}`)
-  // console.log(page)
-  if (page.path === '/dev-404-page/') return
+  if (page.path === '/dev-404-page/' || page.path === '/404.html') return
   const path = page.path as string
   const component = page.component as string
   const { default: PageComponent } = await import(
     join(process.cwd(), 'src/pages', resolve(path))
   )
   deletePage({ path, component })
-
+  const route = path.slice(1, -1)
+  const context = PageComponent.getInitialProps
+    ? await PageComponent.getInitialProps({ route })
+    : {}
   for (const lang of ['', ...languages]) {
-    const context = PageComponent.getInitialProps
-      ? await PageComponent.getInitialProps({ lang })
-      : {}
     createPage({
       path: join('/', lang, path),
       component,
-      context,
+      context: {
+        ...context,
+        lang,
+      },
     })
   }
 }
