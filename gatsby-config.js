@@ -29,13 +29,6 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-react-helmet`,
-    },
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        color: `#ee7911`,
-        showSpinner: true,
-      },
-    },
-  ],
+    }
+  ]
 }

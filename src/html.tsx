@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 
 type Props = {
   htmlAttributes: object
@@ -33,6 +34,7 @@ export default (props: Props) => (
         dangerouslySetInnerHTML={{ __html: props.body }}
       />
       {props.postBodyComponents}
+      <script src={withPrefix('/p5/graphic.min.js')} type="text/javascript" />
     </body>
   </html>
 )

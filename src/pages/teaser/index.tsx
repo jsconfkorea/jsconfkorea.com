@@ -31,7 +31,7 @@ export default () => {
     intro.current!.classList.remove('hide')
     footer.current!.classList.remove('hide')
     if (innerWidth <= 1024) {
-      document.querySelectorAll('.menu-button')?.forEach(elem => {
+      document.querySelectorAll('.menu-button').forEach(elem => {
         elem.classList.remove('hide')
       })
     }
@@ -40,10 +40,6 @@ export default () => {
 
   return (
     <>
-      <Helmet>
-        <title>JSCONF KOREA 2020</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js" />
-      </Helmet>
       <Global styles={style} />
       <Style
         id="container-main"
@@ -88,7 +84,7 @@ export default () => {
                 {t('website')}
               </a>
               <a
-                href="https://www.youtube.com/channel/UCkHwMMujxwX2s_nxXFsUcLQ"
+                href="https://www.youtube.com/watch?v=hbsIOHktvfo&list=PL37ZVnwpeshGanWnYhTdoFLM2IDF28MaQ"
                 target="_blank"
               >
                 {t('video')}
@@ -467,22 +463,22 @@ const Style = styled.div`
     opacity: 0;
   }
 
-  #intro h2 .line:nth-child(1) > .inner {
+  #intro h2 .line:nth-of-type(1) > .inner {
     transition-delay: 0;
   }
-  #intro h2 .line:nth-child(2) > .inner {
+  #intro h2 .line:nth-of-type(2) > .inner {
     transition-delay: 0.4s;
   }
-  #intro h2 .line:nth-child(3) > .inner {
+  #intro h2 .line:nth-of-type(3) > .inner {
     transition-delay: 0.8s;
   }
-  #intro h2 .line:nth-child(1) > .inner span {
+  #intro h2 .line:nth-of-type(1) > .inner span {
     transition-delay: 0;
   }
-  #intro h2 .line:nth-child(2) > .inner span {
+  #intro h2 .line:nth-of-type(2) > .inner span {
     transition-delay: 0.4s;
   }
-  #intro h2 .line:nth-child(3) > .inner span {
+  #intro h2 .line:nth-of-type(3) > .inner span {
     transition-delay: 0.8s;
   }
 
@@ -533,7 +529,7 @@ const Style = styled.div`
     box-sizing: border-box;
     text-align: center;
   }
-  #menu li .side a:first-child {
+  #menu li .side a:first-of-type {
     border-left: none;
   }
   #menu li .side a:hover,
@@ -730,7 +726,7 @@ const Style = styled.div`
     padding-top: 70px;
     letter-spacing: normal;
   }
-  .md-wrapper *:first-child {
+  .md-wrapper *:first-of-type {
     margin-top: 0;
   }
   .md-wrapper h1 {
@@ -785,7 +781,7 @@ const Style = styled.div`
   #toc li {
     margin-top: 10px;
   }
-  #toc li:first-child {
+  #toc li:first-of-type {
     margin-top: 0;
   }
   #toc span {
@@ -836,7 +832,7 @@ const Style = styled.div`
     #toc li {
       margin-top: 7px;
     }
-    #toc li:first-child {
+    #toc li:first-of-type {
       margin-top: 0;
     }
     #toc span {
@@ -941,7 +937,7 @@ const Style = styled.div`
       margin-top: 8px;
       line-height: 1em;
     }
-    #footer-first li:first-child {
+    #footer-first li:first-of-type {
       margin-top: 0;
     }
     #footer-first a {
@@ -1039,16 +1035,16 @@ const Style = styled.div`
       line-height: 1em;
       padding: 3vw;
     }
-    #menu li:nth-child(1) > a.menu-button {
+    #menu li:nth-of-type(1) > a.menu-button {
       transition: transform 0.5s 1.3s;
     }
-    #menu li:nth-child(2) > a.menu-button {
+    #menu li:nth-of-type(2) > a.menu-button {
       transition: transform 0.5s 1.4s;
     }
-    #menu li:nth-child(3) > a.menu-button {
+    #menu li:nth-of-type(3) > a.menu-button {
       transition: transform 0.5s 1.5s;
     }
-    #menu li:nth-child(4) > a.menu-button {
+    #menu li:nth-of-type(4) > a.menu-button {
       transition: transform 0.5s 1.6s;
     }
     .side {
