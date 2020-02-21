@@ -9,9 +9,8 @@ export default async ({
   if (page.path === '/dev-404-page/' || page.path === '/404.html') return
   const path = page.path as string
   const component = page.component as string
-  const { default: PageComponent } = await import(
-    join(process.cwd(), 'src/pages', resolve(path))
-  )
+  const componentPath = join(process.cwd(), 'src/pages', resolve(path))
+  const { default: PageComponent } = await import(componentPath)
   deletePage({ path, component })
   const route = path.slice(1, -1)
   const context = PageComponent.getInitialProps

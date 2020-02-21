@@ -1,9 +1,11 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
 import emotionNormalize from 'emotion-normalize'
+import emotionReset from 'emotion-reset'
 
 const style = css`
   ${emotionNormalize}
+  ${emotionReset}
   html,
   body,
   #___gatsby,
@@ -40,6 +42,9 @@ const style = css`
     background-color: white;
     margin: 0 auto;
     padding: 0;
+
+    word-break: keep-all;
+    word-wrap: break-word;
   }
 
   *,
@@ -48,6 +53,7 @@ const style = css`
     box-sizing: border-box;
     margin: 0;
     outline: none;
+    overflow-x: hidden;
   }
   ::-webkit-scrollbar {
     display: none;

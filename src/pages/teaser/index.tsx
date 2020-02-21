@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import Link from '../../i18n/Link'
 import emotionReset from 'emotion-reset'
+import useScript from '../../hooks/useScript'
+import { withPrefix } from 'gatsby'
 
 export default () => {
   const { t } = useTranslation()
@@ -26,6 +28,12 @@ export default () => {
       (1 - scale) +
       ')'
   }, [])
+  
+  useScript('/p5/graphic.min.js', () => {
+    document.querySelector('canvas')!.remove()
+    // console.log('remove!')
+  })
+  useScript('https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js')
 
   useEffect(() => {
     intro.current!.classList.remove('hide')
@@ -36,7 +44,6 @@ export default () => {
       })
     }
   }, [])
-
 
   return (
     <>
@@ -98,7 +105,7 @@ export default () => {
             <a className="menu-button hide">{t('sponsor')}</a>
           </li>
           <li>
-            <a className="menu-button hide">{t('newsletter')}</a>
+            <button className="menu-button hide">{t('newsletter')}</button>
           </li>
         </ul>
         <footer ref={footer}>
@@ -705,101 +712,6 @@ const Style = styled.div`
     pointer-events: none;
   }
 
-  /* Markdown 문서 */
-  .doc-title {
-    position: relative;
-    background: #2524ee;
-    color: white;
-    padding: 150px 0 30px;
-  }
-  .doc-title h2 {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 40px;
-  }
-  .doc-content {
-    max-width: 800px;
-    margin: 0 auto 50px;
-  }
-  .md-wrapper {
-    color: #2524ee;
-    padding-top: 70px;
-    letter-spacing: normal;
-  }
-  .md-wrapper *:first-of-type {
-    margin-top: 0;
-  }
-  .md-wrapper h1 {
-    margin-top: 120px;
-    margin-bottom: 60px;
-    font-size: 40px;
-  }
-  .md-wrapper h2 {
-    margin-top: 100px;
-    margin-bottom: 50px;
-    font-size: 35px;
-  }
-  .md-wrapper h3 {
-    margin-top: 80px;
-    margin-bottom: 25px;
-    font-size: 25px;
-  }
-  .md-wrapper h4 {
-    margin-top: 60px;
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-  .md-wrapper p {
-    margin-top: 15px;
-    font-size: 15px;
-    line-height: 1.5em;
-  }
-  .md-wrapper ul {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-  .md-wrapper li {
-    margin-top: 10px;
-    font-size: 15px;
-    line-height: 1.5em;
-    color: #2524ee;
-    border: solid 1px #2524ee;
-    padding: 10px 15px;
-    border-radius: 3px;
-  }
-
-  /* Markdown 문서 TOC */
-  #toc {
-    position: fixed;
-    left: 20px;
-    top: 295px;
-    font-size: 12px;
-    line-height: 1.4;
-    color: #2524ee;
-    max-width: 280px;
-  }
-  #toc li {
-    margin-top: 10px;
-  }
-  #toc li:first-of-type {
-    margin-top: 0;
-  }
-  #toc span {
-    display: inline-block;
-    letter-spacing: normal;
-    border: solid 1px #2524ee00;
-    border-radius: 3px;
-    padding: 3px 7px;
-    box-shadow: 0 0 0 #2524ee;
-    transform: translate(3px, 4px);
-    transition: all 0.3s;
-  }
-  #toc li.active span {
-    border: solid 1px #2524ee;
-    transform: translate(0px, 0px);
-    box-shadow: 3px 4px 0 #2524ee;
-  }
-
   /* 화면비율에 따른 인트로 타이틀텍스트 변화 */
   @media (max-aspect-ratio: 10/7) {
     #intro h2 {
@@ -822,31 +734,7 @@ const Style = styled.div`
     }
   }
 
-  @media screen and (max-width: 1439px) {
-    /* Markdown 문서 TOC */
-    #toc {
-      left: 15px;
-      font-size: 10px;
-      max-width: 200px;
-    }
-    #toc li {
-      margin-top: 7px;
-    }
-    #toc li:first-of-type {
-      margin-top: 0;
-    }
-    #toc span {
-      border-radius: 3px;
-      padding: 1px 5px;
-    }
-  }
-
   @media screen and (max-width: 1279px) {
-    /* Markdown 문서 TOC */
-    #toc {
-      display: none;
-    }
-
     /* 푸터 */
     #footer-first li {
       margin-right: 18px;
@@ -873,9 +761,6 @@ const Style = styled.div`
       padding-top: 0;
       background: transparent;
     } */
-    .doc-container {
-      background: #fff;
-    }
 
     /* 헤더 */
     header {
@@ -978,32 +863,7 @@ const Style = styled.div`
       display: block;
       height: 100%;
     }
-    .doc-container header {
-      position: fixed;
-      right: 0;
-      left: 0;
-      top: 0;
-      background: #2524ee;
-      padding: 0 3vw;
-    }
-    .doc-container h1 {
-      display: block;
-    }
-    .doc-container h1 a {
-      display: block;
-      height: 100%;
-      padding: 7px 0;
-      font-size: 15px;
-      line-height: 0.8em;
-      box-sizing: border-box;
-    }
-    .doc-container h1 img {
-      height: 25px;
-      width: auto;
-    }
-    .doc-container #lang-btn {
-      line-height: 50px;
-    }
+
 
     /* 타이틀 텍스트 */
     #intro {
@@ -1072,67 +932,10 @@ const Style = styled.div`
     header:after,
     footer:after,
     #menu:after,
-    #intro:after,
-    .doc-container:after {
+    #intro:after{
       content: '';
       display: none;
       background: none;
-    }
-
-    /* Markdown 문서 */
-    .doc-title {
-      padding: 100px 3vw 3vw;
-    }
-    .doc-content {
-      padding: 50px 3vw 3vw;
-    }
-    .doc-title h2 {
-      max-width: auto;
-      font-size: 30px;
-    }
-    .doc-content {
-      max-width: auto;
-    }
-    .md-wrapper {
-      padding-top: 20px;
-    }
-    .md-wrapper h1 {
-      margin-top: 70px;
-      margin-bottom: 30px;
-      font-size: 30px;
-    }
-    .md-wrapper h2 {
-      margin-top: 60px;
-      margin-bottom: 25px;
-      font-size: 25px;
-    }
-    .md-wrapper h3 {
-      margin-top: 50px;
-      margin-bottom: 20px;
-      font-size: 20px;
-      line-height: 1.5em;
-    }
-    .md-wrapper h4 {
-      margin-top: 30px;
-      margin-bottom: 20px;
-      font-size: 18px;
-      line-height: 1.5em;
-    }
-    .md-wrapper p {
-      margin-top: 15px;
-      font-size: 15px;
-      line-height: 1.5em;
-    }
-    .md-wrapper ul {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .md-wrapper li {
-      margin-top: 10px;
-      font-size: 15px;
-      line-height: 1.5em;
-      padding: 10px;
-      border-radius: 8px;
     }
   }
 `
