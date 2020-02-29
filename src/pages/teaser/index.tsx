@@ -27,6 +27,13 @@ export default () => {
       'px) translateZ(0) scale(' +
       (1 - scale) +
       ')'
+
+
+    // 디자인 확인용 임시
+    if(scrollY > 5)header.current!.classList.remove('hide')
+    else header.current!.classList.add('hide')
+    // 디자인 확인용 임시
+
   }, [])
   
   useScript('/p5/graphic.min.js', () => {
@@ -67,48 +74,52 @@ export default () => {
           <h2>
             <div className="line">
               <div className="inner">
-                <span>JSCONF</span>
+                <span><img alt="jsconf" src="title0.svg" /></span>
               </div>
             </div>
             <div className="line">
               <div className="inner">
-                <span>KOREA</span>
+                <span><img alt="korea" src="title1.svg" /></span>
               </div>
             </div>
             <div className="line">
               <div className="inner">
-                <span>2020</span>
+                <span><img alt="2020" src="title2.svg" /></span>
               </div>
             </div>
           </h2>
         </div>
-
-        <ul id="menu" ref={menu}>
-          <li>
-            <a className="menu-button hide">{t('look_back_2019')}</a>
-            <div className="side">
-              <a href="https://jsconfkorea.com/" target="_blank">
-                {t('website')}
-              </a>
-              <a
-                href="https://www.youtube.com/watch?v=hbsIOHktvfo&list=PL37ZVnwpeshGanWnYhTdoFLM2IDF28MaQ"
-                target="_blank"
-              >
-                {t('video')}
-              </a>
-            </div>
-          </li>
-          <li>
-            <a className="menu-button hide">{t('call_for_proposals')}</a>
-          </li>
-          <li>
-            <a className="menu-button hide">{t('sponsor')}</a>
-          </li>
-          <li>
-            <button className="menu-button hide">{t('newsletter')}</button>
-          </li>
-        </ul>
-        <footer ref={footer}>
+        
+        {/* .menu-button 의 hide 클래스 빼두었습니다 */}
+        {/* #menu-container 가 추가 되었어요 */}
+        <div id="menu-container">
+          <ul id="menu" ref={menu}>
+            <li>
+              <a className="menu-button"><span>{t('look_back_2019')}</span></a>
+              <div className="side">
+                <a href="https://jsconfkorea.com/" target="_blank">
+                  <span>{t('website')}</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=hbsIOHktvfo&list=PL37ZVnwpeshGanWnYhTdoFLM2IDF28MaQ"
+                  target="_blank"
+                >
+                  <span>{t('video')}</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <a className="menu-button"><span>{t('call_for_proposals')}</span></a>
+            </li>
+            <li>
+              <a className="menu-button"><span>{t('sponsor')}</span></a>
+            </li>
+            <li>
+              <button className="menu-button"><span>{t('newsletter')}</span></button>
+            </li>
+          </ul>
+        </div>
+        <footer ref={footer} className="hide">
           <ul id="footer-first" className="float-left">
             <li>
               <Link to={'/code-of-conduct'}>{t('code_of_conduct')}</Link>
@@ -122,6 +133,18 @@ export default () => {
               contact@jsconfkorea.com
             </a>
             <div className="social-link-container">
+            <a
+                className="social-link"
+                href="#"
+                target="_blank"
+              >
+                <span className="desktop">
+                  <img alt="github icon" src="icon-github-white.svg" />
+                </span>
+                <span className="mobile">
+                  <img alt="github icon" src="icon-github.svg" />
+                </span>
+              </a>
               <a
                 className="social-link"
                 href="https://www.instagram.com/jsconf.korea/"
@@ -215,6 +238,20 @@ const style = css`
     text-decoration: none;
     cursor: pointer;
   }
+  button{
+    -webkit-appearance:none;
+    padding:0;
+    margin:0;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:inherit;
+    font-weight:inherit;
+    font-family:inherit;
+  }
+  button:hover{
+    background:transparent;
+  }
 
   .p5Canvas {
     position: fixed;
@@ -233,8 +270,6 @@ const Style = styled.div`
 
   height: 100%;
   background: #2524ee;
-  /* padding-bottom: 50px; */
-  /* padding-top: calc(100% + 50px); */
 
   scrollbar-width: none;
 
@@ -399,7 +434,7 @@ const Style = styled.div`
     display: inline-block;
     vertical-align: top;
     font-size: 30px;
-    line-height: 50px;
+    line-height: 40px;
   }
   footer a:hover,
   .touch-device footer a:hover:active {
@@ -410,14 +445,15 @@ const Style = styled.div`
   }
   .social-link-container {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 5px;
   }
   #footer-second .social-link {
     font-size: 0;
-    height: 50px;
-    padding: 10px 5px;
+    height: 45px;
+    padding: 11px 0;
     margin: 0;
     box-sizing: border-box;
+    margin-left:10px;
   }
   #footer-second .social-link img {
     display: block;
@@ -434,37 +470,50 @@ const Style = styled.div`
     top: 0;
     left: 0;
     will-change: transform;
+    pointer-events:none;
   }
   #intro h2 {
-    font-size: calc(40vh - 50px / 3);
-    line-height: 0.8em;
-    letter-spacing: -0.1em;
-    color: #fff;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 1%;
+    bottom: 50px;
+    overflow:visible;
   }
   #intro .line {
+    height:33.3%;
+    padding-left:1%;
     transform-origin: 0% 50%;
     transform: translateZ(-100px);
     transform-style: preserve-3d;
+    overflow:visible;
+  }
+  #intro h2 .line:nth-of-type(2){
+    padding-left:3%;
   }
   #intro h2 .line > .inner {
+    height:100%;
     transform: rotateX(0deg);
     transform-origin: 0% 50%;
     transform-style: preserve-3d;
     transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow:visible;
   }
   #intro.hide h2 .line > .inner {
     transform: rotateX(-90deg);
   }
+  #intro h2 img{
+    height:96%;
+    width:auto;
+  }
   #intro h2 .line span {
+    height:100%;
     display: inline-block;
     position: relative;
     transform: translateZ(100px);
     opacity: 1;
     transform-style: preserve-3d;
     transition: opacity 1.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow:visible;
   }
   #intro.hide h2 .line span {
     opacity: 0;
@@ -490,49 +539,57 @@ const Style = styled.div`
   }
 
   /* 메인 메뉴 */
+  #menu-container{
+    position:relative;
+    height:calc(100% - 105px);
+    margin-top:100px;
+  }
   #menu {
-    /* position: relative; */
-    /* padding-top: 50%; */
-    margin: 0;
-    height: 100%;
+    position: relative;
+    top:100%;
+    height:100%;
     list-style: none;
-    /* padding: 0; */
+    margin-bottom:55px;
   }
   #menu li {
-    height: calc(25vh - 30px);
+    height: 25%;
     color: #2524ee;
     border-top: solid 5px #2524ee;
     background: #fff;
     overflow: hidden;
     position: relative;
     transition: background-color 0.1s, color 0.1s;
+    box-sizing:border-box;
   }
   .side {
     position: absolute;
-    top: 0;
+    top: -5px;
+    bottom:0px;
     right: 0;
     transform: translateY(110%);
     transition: transform 0.5s;
     transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
     background: #fff;
     width: 100%;
+    font-size:0;
     white-space: nowrap;
     border-top: solid 5px #2524ee;
-    margin-top: -5px;
+    box-sizing:border-box;
   }
   #menu li:hover .side {
     transform: translateY(0);
   }
   #menu li .side a {
-    display: inline-block;
+    display: table;
+    float:left;
     color: #2524ee;
     background: #fff;
-    font-size: 15vh;
-    line-height: calc(25vh - 30px);
+    line-height: 1em;
     letter-spacing: -0.03em;
     border-left: solid 5px #2524ee;
     cursor: pointer;
     width: 50%;
+    height: 101%;
     box-sizing: border-box;
     text-align: center;
   }
@@ -548,11 +605,51 @@ const Style = styled.div`
     color: #2524ee;
     background: #fff;
   }
-  #menu li > a.menu-button {
-    display: block;
-    font-size: 15vh;
+  #menu li .side a>span{
+    display:table-cell;
+    vertical-align:middle;
+  }
+
+  #menu a, #menu button { font-size: 27.5px; }
+  
+  @media screen and (min-height:480px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 47.5px; }
+  }
+  @media screen and (min-height:600px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 62.5px; }
+  }
+  @media screen and (min-height:768px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 83.5px; }
+  }
+  @media screen and (min-height:960px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 107.5px; }
+  }
+  @media screen and (min-height:1024px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 115.5px; }
+  }
+  @media screen and (min-height:1080px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 122.5px; }
+  }
+  @media screen and (min-height:1200px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 137.5px; }
+  }
+  @media screen and (min-height:1440px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 167.5px; }
+  }
+  @media screen and (min-height:1600px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 187.5px; }
+  }
+  @media screen and (min-height:1800px) and (min-width:1024px){
+    #menu a, #menu button { font-size: 212.5px; }
+  }
+
+  
+  #menu li > .menu-button {
+    display: table;
     letter-spacing: -0.03em;
-    line-height: calc(25vh - 30px);
+    line-height: 1em;
+    width:100%;
+    height:100%;
     padding-left: 50px;
     cursor: pointer;
 
@@ -567,7 +664,7 @@ const Style = styled.div`
 
     white-space: nowrap;
   }
-  #menu li > a.menu-button.hide {
+  #menu li > .menu-button.hide {
     transform: translateY(100%);
   }
 
@@ -579,6 +676,11 @@ const Style = styled.div`
   .touch-device #menu li:hover {
     background: #fff;
     color: #2524ee;
+  }
+
+  #menu li > .menu-button>span{
+    display:table-cell;
+    vertical-align:middle;
   }
 
   /* 뉴스레터 */
@@ -719,7 +821,10 @@ const Style = styled.div`
       top: auto;
       bottom: calc(50px + 3vw);
       left: 2.8vw;
-      font-size: calc(16vw);
+      font-size: 16vw;
+    }
+    #intro .line{
+      height:12.5vw;
     }
   }
 
@@ -876,23 +981,33 @@ const Style = styled.div`
     #intro h2 {
       position: absolute;
       top: auto;
-      bottom: 3vw;
+      bottom: 5vw;
       left: 2.8vw;
-      font-size: calc(16vw);
+    }
+    #intro .line{
+      height:12.5vw;
     }
 
     /* 메인메뉴 */
+    #menu-container{
+      height:auto;
+      margin-top:0;
+    }
     #menu {
+      top:auto;
+      height:auto;
       border-bottom: solid 3px #2524ee;
     }
     #menu li {
       height: auto;
       border-width: 3px;
     }
-    #menu li .side a,
-    #menu li > a.menu-button {
-      font-size: 10vw;
+    #menu a, #menu button{
+      font-size:10vw;
       line-height: 1em;
+    }
+    #menu li .side a,
+    #menu li > .menu-button {
       padding: 3vw;
     }
     #menu li:nth-of-type(1) > a.menu-button {
@@ -937,5 +1052,7 @@ const Style = styled.div`
       display: none;
       background: none;
     }
+
   }
+
 `
