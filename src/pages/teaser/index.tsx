@@ -1,56 +1,21 @@
-import React, { useEffect, useCallback, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Global, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import Helmet from 'react-helmet'
-import { useTranslation } from 'react-i18next'
-import Link from '../../i18n/Link'
 import emotionReset from 'emotion-reset'
 import useScript from '../../hooks/useScript'
-import { withPrefix } from 'gatsby'
+import Header from './header'
+import Intro from './intro'
+import Menu from './menu'
+import Footer from './footer'
+import NewsLetter from './newsletter'
 
 export default () => {
-  const { t } = useTranslation()
   const container = useRef<HTMLDivElement>(null)
-  const header = useRef<HTMLDivElement>(null)
-  const intro = useRef<HTMLDivElement>(null)
-  const menu = useRef(null)
-  const footer = useRef<HTMLDivElement>(null)
 
-  const onScroll = useCallback(e => {
-    const scrollY = e.target.scrollTop
-    const innerHeight = e.target.clientHeight
-    const scale =
-      scrollY / innerHeight > 1 ? 1 : (scrollY / innerHeight) * 0.075
-    intro.current!.style.transform =
-      'translateY(' +
-      -scrollY * 0.1 +
-      'px) translateZ(0) scale(' +
-      (1 - scale) +
-      ')'
-
-
-    // 디자인 확인용 임시
-    if(scrollY > 5)header.current!.classList.remove('hide')
-    else header.current!.classList.add('hide')
-    // 디자인 확인용 임시
-
-  }, [])
-  
   useScript('/p5/graphic.min.js', () => {
     document.querySelector('canvas')!.remove()
-    // console.log('remove!')
   })
   useScript('https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js')
-
-  useEffect(() => {
-    intro.current!.classList.remove('hide')
-    footer.current!.classList.remove('hide')
-    if (innerWidth <= 1024) {
-      document.querySelectorAll('.menu-button').forEach(elem => {
-        elem.classList.remove('hide')
-      })
-    }
-  }, [])
 
   return (
     <>
@@ -58,148 +23,12 @@ export default () => {
       <Style
         id="container-main"
         className="container"
-        ref={container}
-        onScroll={onScroll}
-      >
-        <header id="header" ref={header} className="hide">
-          <h1>
-            <a>JSCONF KOREA 2020</a>
-          </h1>
-          <div id="lang-btn">
-            <Link lang="en">EN</Link> / <Link lang="ko">KR</Link>
-          </div>
-        </header>
-
-        <div id="intro" className="hide" ref={intro}>
-          <h2>
-            <div className="line">
-              <div className="inner">
-                <span><img alt="jsconf" src="title0.svg" /></span>
-              </div>
-            </div>
-            <div className="line">
-              <div className="inner">
-                <span><img alt="korea" src="title1.svg" /></span>
-              </div>
-            </div>
-            <div className="line">
-              <div className="inner">
-                <span><img alt="2020" src="title2.svg" /></span>
-              </div>
-            </div>
-          </h2>
-        </div>
-        
-        {/* .menu-button 의 hide 클래스 빼두었습니다 */}
-        {/* #menu-container 가 추가 되었어요 */}
-        <div id="menu-container">
-          <ul id="menu" ref={menu}>
-            <li>
-              <a className="menu-button"><span>{t('look_back_2019')}</span></a>
-              <div className="side">
-                <a href="https://jsconfkorea.com/" target="_blank">
-                  <span>{t('website')}</span>
-                </a>
-                <a
-                  href="https://www.youtube.com/watch?v=hbsIOHktvfo&list=PL37ZVnwpeshGanWnYhTdoFLM2IDF28MaQ"
-                  target="_blank"
-                >
-                  <span>{t('video')}</span>
-                </a>
-              </div>
-            </li>
-            <li>
-              <a className="menu-button"><span>{t('call_for_proposals')}</span></a>
-            </li>
-            <li>
-              <a className="menu-button"><span>{t('sponsor')}</span></a>
-            </li>
-            <li>
-              <button className="menu-button"><span>{t('newsletter')}</span></button>
-            </li>
-          </ul>
-        </div>
-        <footer ref={footer} className="hide">
-          <ul id="footer-first" className="float-left">
-            <li>
-              <Link to={'/code-of-conduct'}>{t('code_of_conduct')}</Link>
-            </li>
-            <li>
-              <Link to={'/privacy-policy'}>{t('privacy_policy')}</Link>
-            </li>
-          </ul>
-          <div id="footer-second" className="float-right">
-            <a id="email" href="mailto:contact@jsconfkorea.com">
-              contact@jsconfkorea.com
-            </a>
-            <div className="social-link-container">
-            <a
-                className="social-link"
-                href="#"
-                target="_blank"
-              >
-                <span className="desktop">
-                  <img alt="github icon" src="icon-github-white.svg" />
-                </span>
-                <span className="mobile">
-                  <img alt="github icon" src="icon-github.svg" />
-                </span>
-              </a>
-              <a
-                className="social-link"
-                href="https://www.instagram.com/jsconf.korea/"
-                target="_blank"
-              >
-                <span className="desktop">
-                  <img alt="instagram icon" src="icon-instagram-white.svg" />
-                </span>
-                <span className="mobile">
-                  <img alt="instagram icon" src="icon-instagram.svg" />
-                </span>
-              </a>
-              <a
-                className="social-link"
-                href="https://twitter.com/jsconfkorea"
-                target="_blank"
-              >
-                <span className="desktop">
-                  <img alt="twitter icon" src="icon-twitter-white.svg" />
-                </span>
-                <span className="mobile">
-                  <img alt="twitter icon" src="icon-twitter.svg" />
-                </span>
-              </a>
-              <a
-                className="social-link"
-                href="https://www.facebook.com/jsconfkorea/"
-                target="_blank"
-              >
-                <span className="desktop">
-                  <img alt="facebook icon" src="icon-facebook-white.svg" />
-                </span>
-                <span className="mobile">
-                  <img alt="facebook icon" src="icon-facebook.svg" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </footer>
-        <div id="news-letter" className="hide">
-          <div className="inner">
-            <div id="news-letter-form">
-              <p>{t('subscribe.description')}</p>
-              <input
-                id="email-input"
-                type="email"
-                placeholder="email address"
-              />
-              <div id="notice" className="hide">
-                {t('subscribe.error_message')}
-              </div>
-              <button id="news-letter-submit">{t('subscribe.submit')}</button>
-            </div>
-          </div>
-        </div>
+        ref={container}>
+        <Header/>
+        <Intro />
+        <Menu />
+        <Footer />
+        <NewsLetter />
       </Style>
     </>
   )
