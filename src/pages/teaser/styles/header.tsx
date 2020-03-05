@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Header = styled.header`
+const Header = styled.header`
   top: 0;
   border-bottom: solid 5px #fff;
   transform: translateY(0);
@@ -114,3 +114,5 @@ export const Header = styled.header`
     }
   }
 `
+
+export default Header;

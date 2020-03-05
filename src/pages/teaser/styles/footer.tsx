@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Footer = styled.footer`
+const Footer = styled.footer`
   position: fixed;
   left: 0;
   right: 0;
@@ -167,3 +167,5 @@ export const Footer = styled.footer`
     }
   }
 `
+
+export default Footer;

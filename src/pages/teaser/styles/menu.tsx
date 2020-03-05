@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Menu = styled.div`
+const Menu = styled.div`
   /* 메인 메뉴 */
   position:relative;
   height: 100%;
@@ -208,3 +208,5 @@ export const Menu = styled.div`
     }
   }
 `
+
+export default Menu;

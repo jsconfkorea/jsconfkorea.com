@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const NewsLetter = styled.div`
+const NewsLetter = styled.div`
   /* 뉴스레터 */
   position: fixed;
   top: 0;
@@ -149,3 +149,5 @@ export const NewsLetter = styled.div`
     }
   }
 `
+
+export default NewsLetter;

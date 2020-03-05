@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Link from '../../i18n/Link'
-import { Header } from './styles'
+import Header from './styles/header'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 export default () => {

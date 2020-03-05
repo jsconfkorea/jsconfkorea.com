@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Intro = styled.div`
+const Intro = styled.div`
 
   position: fixed;
   width: 100%;
@@ -143,3 +143,4 @@ export const Intro = styled.div`
     }
   }
 `
+export default Intro;

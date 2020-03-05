@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next'
-import { NewsLetter } from './styles';
+import NewsLetter from './styles/newsletter';
 
 type Props = {
   showNewsLetter: string,

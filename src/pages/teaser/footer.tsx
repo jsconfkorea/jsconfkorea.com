@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from '../../i18n/Link'
 import { useTranslation } from 'react-i18next'
-import { Footer } from './styles'
+import Footer from './styles/footer'
 
 export default () => {
   const { t } = useTranslation()
