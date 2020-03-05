@@ -32,10 +32,10 @@ export default () => {
           target="_blank"
         >
           <span className="desktop">
-            <img alt="github icon" src="icon-github-white.svg" />
+            <img alt="github icon" src="../icon-github-white.svg" />
           </span>
           <span className="mobile">
-            <img alt="github icon" src="icon-github.svg" />
+            <img alt="github icon" src="../icon-github.svg" />
           </span>
         </a>
         <a
@@ -44,10 +44,10 @@ export default () => {
           target="_blank"
         >
           <span className="desktop">
-            <img alt="instagram icon" src="icon-instagram-white.svg" />
+            <img alt="instagram icon" src="../icon-instagram-white.svg" />
           </span>
           <span className="mobile">
-            <img alt="instagram icon" src="icon-instagram.svg" />
+            <img alt="instagram icon" src="../icon-instagram.svg" />
           </span>
         </a>
         <a
@@ -56,10 +56,10 @@ export default () => {
           target="_blank"
         >
           <span className="desktop">
-            <img alt="twitter icon" src="icon-twitter-white.svg" />
+            <img alt="twitter icon" src="../icon-twitter-white.svg" />
           </span>
           <span className="mobile">
-            <img alt="twitter icon" src="icon-twitter.svg" />
+            <img alt="twitter icon" src="../icon-twitter.svg" />
           </span>
         </a>
         <a
@@ -68,10 +68,10 @@ export default () => {
           target="_blank"
         >
           <span className="desktop">
-            <img alt="facebook icon" src="icon-facebook-white.svg" />
+            <img alt="facebook icon" src="../icon-facebook-white.svg" />
           </span>
           <span className="mobile">
-            <img alt="facebook icon" src="icon-facebook.svg" />
+            <img alt="facebook icon" src="../icon-facebook.svg" />
           </span>
         </a>
       </div>

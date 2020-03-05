@@ -8,12 +8,10 @@ export default () => {
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
-      if (prevPos.y !== currPos.y) {
-        if (currPos.y === 0) {
-          setShowHeader("hide");
-        } else {
-          setShowHeader("");
-        }
+      if (currPos.y === 0) {
+        setShowHeader("hide");
+      } else {
+        setShowHeader("");
       }
     },
     [showHeader]

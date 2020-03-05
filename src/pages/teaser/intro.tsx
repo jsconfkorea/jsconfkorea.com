@@ -29,17 +29,17 @@ export default () => {
       <h2>
         <div className="line">
           <div className="inner">
-            <span><img alt="jsconf" src="title0.svg" /></span>
+            <span><img alt="jsconf" src="../title0.svg" /></span>
           </div>
         </div>
         <div className="line">
           <div className="inner">
-            <span><img alt="korea" src="title1.svg" /></span>
+            <span><img alt="korea" src="../title1.svg" /></span>
           </div>
         </div>
         <div className="line">
           <div className="inner">
-            <span><img alt="2020" src="title2.svg" /></span>
+            <span><img alt="2020" src="../title2.svg" /></span>
           </div>
         </div>
       </h2>

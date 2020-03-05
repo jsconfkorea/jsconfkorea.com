@@ -99,14 +99,14 @@ const style = css`
     z-index: 9;
   }
 
-  @media screen and (max-width: 1023px) {
-    html,
-    body,
-    #___gatsby,
-    #gatsby-focus-wrapper {
-      height: auto
-    }
-  }
+  // @media screen and (max-width: 1023px) {
+  //   html,
+  //   body,
+  //   #___gatsby,
+  //   #gatsby-focus-wrapper {
+  //     height: auto
+  //   }
+  // }
 `
 
 const Style = styled.div`
