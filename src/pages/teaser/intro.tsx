@@ -1,34 +1,31 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import { Intro } from './styles'
 
 export default () => {
-  const intro = useRef<HTMLDivElement>(null)
-
+  const [introStyle, setIntroStyle] = useState({ transform: 'none'});
+  const [showIntro, setShowIntro] = useState("hide");
+  
   useEffect(() => {
-    intro.current!.classList.remove('hide')
+    setShowIntro("");
   }, [])
 
-  const onScroll = useCallback(e => {
-    const scrollY = e.target.scrollTop
-    const innerHeight = e.target.clientHeight
-    const scale =
-      scrollY / innerHeight > 1 ? 1 : (scrollY / innerHeight) * 0.075
-    intro.current!.style.transform =
-      'translateY(' +
-      -scrollY * 0.1 +
-      'px) translateZ(0) scale(' +
-      (1 - scale) +
-      ')'
-
-
-    // // 디자인 확인용 임시
-    // if(scrollY > 5)header.current!.classList.remove('hide')
-    // else header.current!.classList.add('hide')
-    // // 디자인 확인용 임시
-
-  }, [])
+  useScrollPosition(
+    ({ currPos }) => {
+      const scale = ((-1 * currPos.y)/window.innerHeight)>1?1:(((-1 * currPos.y)/window.innerHeight) * 0.075);
+      const shouldBeStyle = {
+        willChange: "transform",
+        transform: `translateY(${-1 * currPos.y * 0.1}px) translateZ(0) scale(${1 - scale})`
+      }
+      if (JSON.stringify(shouldBeStyle) === JSON.stringify(introStyle)) return
+   
+      setIntroStyle(shouldBeStyle)
+    },
+    [introStyle]
+  )
   
   return (
-    <div id="intro" className="hide" ref={intro} onScroll={onScroll}>
+    <Intro className={showIntro} style={{ ...introStyle }}>
       <h2>
         <div className="line">
           <div className="inner">
@@ -46,6 +43,6 @@ export default () => {
           </div>
         </div>
       </h2>
-    </div>
+    </Intro>
   )
 }

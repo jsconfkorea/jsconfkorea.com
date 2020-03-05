@@ -1,23 +1,24 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next'
+import { Menu } from './styles'
 
-export default () => {
-  const menu = useRef(null)
+type Props = {
+  toggleNewsLetter: Function
+}
+
+export default ({ toggleNewsLetter } : Props) => {
   const { t } = useTranslation()
-
-  useEffect(() => {
-    if (innerWidth <= 1024) {
-      document.querySelectorAll('.menu-button').forEach(elem => {
-        elem.classList.remove('hide')
-      })
-    }
-  }, [])
+  const [showNewsLetter, setShowNewsLetter] = useState(false);
+  const handleOnClick = () => {
+    setShowNewsLetter(!showNewsLetter)
+    toggleNewsLetter(!showNewsLetter)
+  }
 
   {/* .menu-button 의 hide 클래스 빼두었습니다 */}
   {/* #menu-container 가 추가 되었어요 */}
   return (
-    <div id="menu-container">
-      <ul id="menu" ref={menu}>
+    <Menu>
+      <ul id="menu">
         <li>
           <a className="menu-button"><span>{t('look_back_2019')}</span></a>
           <div className="side">
@@ -38,10 +39,10 @@ export default () => {
         <li>
           <a className="menu-button"><span>{t('sponsor')}</span></a>
         </li>
-        <li>
+        <li onClick = { handleOnClick }>
           <button className="menu-button"><span>{t('newsletter')}</span></button>
         </li>
       </ul>
-    </div>
+    </Menu>
   )
 }

@@ -1,17 +1,18 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from '../../i18n/Link'
 import { useTranslation } from 'react-i18next'
+import { Footer } from './styles'
 
 export default () => {
-  const footer = useRef<HTMLDivElement>(null)
   const { t } = useTranslation()
+  const [showFooter, setShowFooter] = useState("hide");
 
   useEffect(() => {
-    footer.current!.classList.remove('hide')
+    setShowFooter("");
   }, [])
 
   return (
-    <footer ref={footer} className="hide">
+    <Footer className={showFooter}>
       <ul id="footer-first" className="float-left">
         <li>
           <Link to={'/code-of-conduct'}>{t('code_of_conduct')}</Link>
@@ -75,6 +76,6 @@ export default () => {
         </a>
       </div>
         </div>
-    </footer>
+    </Footer>
   )
 }
