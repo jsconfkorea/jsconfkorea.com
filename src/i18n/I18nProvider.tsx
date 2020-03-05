@@ -14,6 +14,9 @@ i18n
     detection: {
       order: ['navigator'],
     },
+    react: {
+      useSuspense: false
+    }
   })
 
 type Props = {
