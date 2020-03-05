@@ -4,22 +4,24 @@ import { Header } from './styles'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 export default () => {
-  const [hideOnScroll, setHideOnScroll] = useState(true);
+  const [showHeader, setShowHeader] = useState("hide");
 
   useScrollPosition(
-    ({ currPos }) => {
-      const isShow = currPos.y === 55
-      if (isShow !== hideOnScroll) setHideOnScroll(isShow)
+    ({ prevPos, currPos }) => {
+      if (prevPos.y !== currPos.y) {
+        if (currPos.y === 0) {
+          setShowHeader("hide");
+        } else {
+          setShowHeader("");
+        }
+      }
     },
-    [hideOnScroll]
+    [showHeader]
   )
 
-  const resolveClassName = () => {
-    return hideOnScroll ? 'hide' : ''
-  }
 
   return (
-    <Header id="header" className={resolveClassName()}>
+    <Header id="header" className={showHeader}>
         <h1>
           <a>JSCONF KOREA 2020</a>
         </h1>

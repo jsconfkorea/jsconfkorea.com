@@ -40,7 +40,6 @@ export const Header = styled.header`
   }
 
   &.hide {
-    position: relative;
     transform: translateY(-55px);
   }
   
@@ -97,7 +96,6 @@ export const Header = styled.header`
     padding: 0;
     
     &.hide {
-      position: relative;
       transform: none;
     }
     

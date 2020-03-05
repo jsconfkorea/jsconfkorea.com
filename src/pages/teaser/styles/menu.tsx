@@ -3,8 +3,7 @@ import styled from '@emotion/styled'
 export const Menu = styled.div`
   /* 메인 메뉴 */
   position:relative;
-  height:calc(100% - 105px);
-  margin-top: 55px;
+  height: 100%;
 
   #menu:after {
     content: '';
@@ -25,7 +24,6 @@ export const Menu = styled.div`
     top:100%;
     height:100%;
     list-style: none;
-    margin-bottom:55px;
   }
   #menu li {
     height: 25%;

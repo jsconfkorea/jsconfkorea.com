@@ -21,7 +21,7 @@ export default () => {
           <Link to={'/privacy-policy'}>{t('privacy_policy')}</Link>
         </li>
       </ul>
-      <div id="footer-second" className="float-right">
+      <div id="footer-second" className="float-right fixed">
         <a id="email" href="mailto:contact@jsconfkorea.com">
           contact@jsconfkorea.com
         </a>

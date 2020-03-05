@@ -14,20 +14,6 @@ export const Footer = styled.footer`
   border-top: solid 5px #fff;
   transition: transform 1s 1s;
   transform: translateY(0%);
-  
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   opacity: 0.2;
-  //   background-size: 150px;
-  //   background-image: url(/texture.png);
-  //   pointer-events: none;
-  // }
 
   .hide {
     transform: translateY(100%);
