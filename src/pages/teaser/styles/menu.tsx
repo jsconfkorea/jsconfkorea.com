@@ -51,11 +51,14 @@ const Menu = styled.div`
     border-top: solid 5px #2524ee;
     box-sizing:border-box;
   }
+  .side span {
+    line-height: 1.5;
+  }
   #menu li:hover .side {
     transform: translateY(0);
   }
   #menu li .side a {
-    display: table;
+    // display: table;
     float:left;
     color: #2524ee;
     background: #fff;
@@ -81,8 +84,8 @@ const Menu = styled.div`
     background: #fff;
   }
   #menu li .side a>span{
-    display:table-cell;
-    vertical-align:middle;
+    // display:table-cell;
+    // vertical-align:middle;
   }
 
   #menu a, #menu button { font-size: 27.5px; }
@@ -120,9 +123,10 @@ const Menu = styled.div`
 
   
   #menu li > .menu-button {
-    display: table;
+    //display: table;
     letter-spacing: -0.03em;
-    line-height: 1em;
+    line-height: 2;
+    text-align: left;
     width:100%;
     height:100%;
     padding-left: 50px;
@@ -154,8 +158,8 @@ const Menu = styled.div`
   }
 
   #menu li > .menu-button>span{
-    display:table-cell;
-    vertical-align:middle;
+    // display:table-cell;
+    // vertical-align:middle;
   }
 
   @media screen and (max-width: 1023px) {
