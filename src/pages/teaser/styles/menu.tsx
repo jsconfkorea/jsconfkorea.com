@@ -52,7 +52,7 @@ const Menu = styled.div`
     box-sizing:border-box;
   }
   .side span {
-    line-height: 1.5;
+    line-height: 2;
   }
   #menu li:hover .side {
     transform: translateY(0);
@@ -210,6 +210,10 @@ const Menu = styled.div`
       content: '';
       display: none;
       background: none;
+    }
+
+    .side span {
+      line-height: 1.5;
     }
   }
 `
