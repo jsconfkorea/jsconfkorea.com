@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useTranslation } from 'react-i18next'
 import Menu from './styles/menu'
+import { useScrollPosition } from "../../lib/scroll";
 
 type Props = {
-  toggleNewsLetter: Function
+  toggleNewsLetter: Function,
+  activeEffect: Function
 }
 
-export default ({ toggleNewsLetter } : Props) => {
+export default ({ toggleNewsLetter, activeEffect } : Props) => {
   const { t } = useTranslation()
   const [showNewsLetter, setShowNewsLetter] = useState(false);
+  const menu = useRef<HTMLDivElement>(null);
   const handleOnClick = () => {
     setShowNewsLetter(!showNewsLetter)
     toggleNewsLetter(!showNewsLetter)
   }
 
+  useScrollPosition(
+    ({ currPos }) => {
+      activeEffect(currPos)
+    },
+    [showNewsLetter],
+    {
+      targetEl: menu
+    }
+  )
+
   {/* .menu-button 의 hide 클래스 빼두었습니다 */}
   {/* #menu-container 가 추가 되었어요 */}
   return (
-    <Menu>
+    <Menu ref={menu}>
       <ul id="menu">
         <li>
           <a className="menu-button"><span>{t('look_back_2019')}</span></a>

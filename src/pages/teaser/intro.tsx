@@ -2,27 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import Intro from './styles/intro'
 
-export default () => {
-  const [introStyle, setIntroStyle] = useState({ transform: 'none'});
+type Props = {
+  introStyle: object
+}
+export default ({introStyle}: Props) => {
   const [showIntro, setShowIntro] = useState("hide");
   
   useEffect(() => {
     setShowIntro("");
   }, [])
-
-  useScrollPosition(
-    ({ currPos }) => {
-      const scale = ((-1 * currPos.y)/window.innerHeight)>1?1:(((-1 * currPos.y)/window.innerHeight) * 0.075);
-      const shouldBeStyle = {
-        willChange: "transform",
-        transform: `translateY(${-1 * currPos.y * 0.1}px) translateZ(0) scale(${1 - scale})`
-      }
-      if (JSON.stringify(shouldBeStyle) === JSON.stringify(introStyle)) return
-   
-      setIntroStyle(shouldBeStyle)
-    },
-    [introStyle]
-  )
   
   return (
     <Intro className={showIntro} style={{ ...introStyle }}>

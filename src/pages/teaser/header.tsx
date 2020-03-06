@@ -1,25 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import Link from '../../i18n/Link'
 import Header from './styles/header'
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
-export default () => {
-  const [showHeader, setShowHeader] = useState("hide");
+type Props = {
+  className: string
+}
 
-  useScrollPosition(
-    ({ prevPos, currPos }) => {
-      if (currPos.y === 0) {
-        setShowHeader("hide");
-      } else {
-        setShowHeader("");
-      }
-    },
-    [showHeader]
-  )
-
-
+export default ({ className }: Props) => {
   return (
-    <Header id="header" className={showHeader}>
+    <Header id="header" className={className}>
         <h1>
           <a>JSCONF KOREA 2020</a>
         </h1>

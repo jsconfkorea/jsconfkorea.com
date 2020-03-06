@@ -12,6 +12,8 @@ import NewsLetter from './newsletter'
 
 export default () => {
   const [showNewsLetter, setShowNewsLetter] = useState("hide");
+  const [headerClass, setHeaderClass] = useState("hide");
+  const [introStyle, setIntroStyle] = useState({ transform: 'none'});
   
   const toggleNewsLetter = (toggle: boolean) => {
     if (toggle) {
@@ -19,6 +21,23 @@ export default () => {
     } else {
       setShowNewsLetter("hide")
     }
+  }
+
+  const activeEffect = (currPos: { y: number }) => {
+    if (currPos.y === 0) {
+      setHeaderClass("hide")
+    } else {
+      setHeaderClass("")
+    }
+
+    const scale = ((currPos.y)/window.innerHeight)>1?1:(((currPos.y)/window.innerHeight) * 0.075);
+    const shouldBeStyle = {
+      willChange: "transform",
+      transform: `translateY(${-1 * currPos.y * 0.1}px) translateZ(0) scale(${1 - scale})`
+    }
+    if (JSON.stringify(shouldBeStyle) === JSON.stringify(introStyle)) return
+  
+    setIntroStyle(shouldBeStyle)
   }
   
   useScript('/p5/graphic.min.js', () => {
@@ -32,9 +51,9 @@ export default () => {
       <Style
         id="container-main"
         className="container">
-        <Header/>
-        <Intro />
-        <Menu toggleNewsLetter={toggleNewsLetter}/>
+        <Header className={headerClass}/>
+        <Intro introStyle={introStyle}/>
+        <Menu toggleNewsLetter={toggleNewsLetter} activeEffect={activeEffect}/>
         <Footer/>
         <NewsLetter showNewsLetter={showNewsLetter} toggleNewsLetter = { toggleNewsLetter }/>
       </Style>
@@ -57,14 +76,9 @@ const style = css`
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 900;
     letter-spacing: -0.1em;
-    height: 100%;
     
   }
-
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    height: 100%
-  }
+  
   body::-webkit-scrollbar {
     display: none;
   }
