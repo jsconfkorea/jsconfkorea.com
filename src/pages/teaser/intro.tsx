@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import Intro from './styles/intro'
 
 type Props = {
