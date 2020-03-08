@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import { languages } from '../config/constants'
 import Link from '../i18n/Link'
 import styled from '@emotion/styled'
 
@@ -9,12 +8,34 @@ type Props = {
 
 export default (props: Props) => (
   <Style>
-    {languages.map(lang => (
-      <Link key={lang} lang={lang} {...props}>
-        {lang}
-      </Link>
-    ))}
+    <Link lang="en" {...props}>
+      EN
+    </Link>
+    {' / '}
+    <Link lang="ko" {...props}>
+      KR
+    </Link>
   </Style>
 )
 
-const Style = styled.div``
+const Style = styled.div`
+  float: right;
+  display: block;
+  line-height: 50px;
+  color: white;
+  font-size: 20px;
+  a {
+    display: inline;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0;
+  }
+
+  @media screen and (min-width: 1023px) {
+    font-size: 30px;
+    a {
+      font-size: 30px;
+    }
+  }
+`

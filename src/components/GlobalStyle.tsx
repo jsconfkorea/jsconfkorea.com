@@ -4,7 +4,7 @@ import emotionNormalize from 'emotion-normalize'
 import emotionReset from 'emotion-reset'
 
 const style = css`
-  ${emotionNormalize}
+  /* ${emotionNormalize} */
   ${emotionReset}
   html,
   body,
@@ -14,6 +14,9 @@ const style = css`
   }
   a {
     text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
   }
   html {
     font-size: 16px;
@@ -32,7 +35,7 @@ const style = css`
   }
 
   body {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    font-family: 'Noto Sans KR', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
       'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     /* -webkit-user-select: none; */
     -webkit-tap-highlight-color: transparent;
@@ -52,8 +55,9 @@ const style = css`
   *:after {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
     outline: none;
-    overflow-x: hidden;
+    /* overflow: hidden; */
   }
   ::-webkit-scrollbar {
     display: none;
